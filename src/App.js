@@ -1,24 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { CartList } from './components/CartList/CartList';
+import { ItemList } from './components/ItemList/ItemList';
+import { FormProduct } from './components/FormProduct/FormProduct';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { NavBar } from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<ItemList />} />
+        <Route path='/Cart' element={<CartList />} />
+        <Route path='/Product/:id' element={<FormProduct />} />
+        <Route path='*' element={<h1 style={{textAlign: 'center'}}>404 - Página no encontrada</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
